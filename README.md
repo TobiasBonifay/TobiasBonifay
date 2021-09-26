@@ -5,7 +5,7 @@ _Student in 3rd year of engineering school at <a href="https://polytech.univ-cot
 ## Who am I ? 
 
 <p>French student in Nice, France. I'm currently 20 year old.</p>
-<p>I would like to become a Java developer! </p>
+<p>I would love to join a professional team as a java developer.</p>
 
 
 ### What I'm focusing on 
