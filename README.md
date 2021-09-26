@@ -4,14 +4,13 @@ _Student in 3rd year of engineering school at <a href="https://polytech.univ-cot
 
 ## Who am I ? 
 
-<p>French student in Nice, France. I'm 20 yo yet.</p>
+<p>French student in Nice, France. I'm currently 20 year old.</p>
 <p>I would like to become a Java developer! </p>
-<p>I'm always trying to grow and learn something new.</p>
+
 
 ### What I'm focusing on 
 
-
-Currently improving my Java and Git skills as a priority.
+<p>I'm always looking for knowledge, especially to improve myself in the use of development tools like Git, in algorithms and in Object Oriented programming.</p>
 
 ```javascript
 const tobias = {
