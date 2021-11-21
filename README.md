@@ -15,9 +15,9 @@ _Student in 3rd year of engineering school at <a href="https://polytech.univ-cot
 ```javascript
 const tobias = {
   pronouns: "he" | "his",
-  code: [Java, Python, HTML, CSS, JS],
+  code: [Java, Python, C, HTML, CSS, JS],
   brain: [0iq, no-cells],
-  challenge: "I did JetBrain Academy 30d challenge"
+  challenge: "JetBrain Academy 30d challenge"
 }
 ```
 
