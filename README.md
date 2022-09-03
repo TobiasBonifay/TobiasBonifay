@@ -1,5 +1,5 @@
 # Hi, I'm Tobias Bonifay
-_Student in 3rd year of engineering school at <a href="https://polytech.univ-cotedazur.fr">Polytech Nice</a>_
+_Student in 4th year of engineering school at <a href="https://polytech.univ-cotedazur.fr">Polytech Nice</a>_
 
 
 ## Who am I ? 
@@ -14,7 +14,7 @@ _Student in 3rd year of engineering school at <a href="https://polytech.univ-cot
 
 ```javascript
 const tobias = {
-  pronouns: "he" | "his",
+  pronouns: "he" | "him",
   code: [Java, Python, C, HTML, CSS, JS],
   brain: [0iq, no-cells],
   challenge: "JetBrain Academy 30d challenge"
