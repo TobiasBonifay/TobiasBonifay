@@ -4,8 +4,8 @@ _Student in 4th year of engineering school at <a href="https://polytech.univ-cot
 
 ## Who am I ? 
 
-<p>French student in Nice, France. I'm currently 20 year old.</p>
-<p>I would love to join a professional team as a java developer.</p>
+<p>French student in Nice, France. I'm currently 21 year old.</p>
+<p>Alwahys open for any java position.</p>
 
 
 ### What I'm focusing on 
