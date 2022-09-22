@@ -2,15 +2,15 @@
 _Student in 4th year of engineering school at <a href="https://polytech.univ-cotedazur.fr">Polytech Nice</a>_
 
 
-## Who am I ? 
+## Who am I? 
 
-<p>French student in Nice, France. I'm currently 21 year old.</p>
-<p>Alwahys open for any java position.</p>
+<p>A French student in Nice, France. I'm currently 21 years old.</p>
+<p>Always open for any java position.</p>
 
 
 ### What I'm focusing on 
 
-<p>I'm always looking for knowledge, especially to improve myself in the use of development tools like Git, in algorithms and in Object Oriented programming.</p>
+<p>I am always looking for knowledge, especially to improve myself in the use of development tools like Git, algorithms and object-oriented programming.</p>
 
 ```javascript
 const tobias = {
