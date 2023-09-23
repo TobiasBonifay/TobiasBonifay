@@ -15,42 +15,82 @@ My insatiable curiosity drives me to constantly expand my knowledge base. I am p
 ```java
 package world;
 
+interface Human {
+    void eat();
+    void sleep();
+}
+
+interface CodingAbility {
+    void code();
+}
+
 class Tobias implements Human, CodingAbility {
 
-  private final String[] pronouns = {"he", "him"};
-  private final String[] languages = {"Java", "Kotlin", "Python"};
-  private final String brainStatus = "Always ready to learn and adapt";
+    private enum Pronoun {
+        HE("he"), HIM("him");
 
-  @Override
-  public void eat() {
-    System.out.println("Eating healthy to stay productive!");
-  }
+        private final String pronoun;
 
-  /**
-   * Sometimes it is necessary...
-   */
-  @Override
-  public void sleep() {
-    System.out.println("Getting enough sleep to stay refreshed!");
-  }
+        Pronoun(String pronoun) {
+            this.pronoun = pronoun;
+        }
 
-  /**
-   * Codes like a caffeinated keyboard warrior!
-   * This method encapsulates the coding action which involves vigorous typing, a lot of coffee, and the occasional dance of victory on successful debugging.
-   */
-  @Override
-  public void code() {
-    System.out.println("Coding with passion and efficiency!");
-  }
+        @Override
+        public String toString() {
+            return pronoun;
+        }
+    }
 
-  public static void main(String[] args) {
-    final Tobias tobias = new Tobias();
-    tobias.eat();
-    tobias.sleep();
-    tobias.code();
-  }
+    private enum Language {
+        JAVA("Java"), KOTLIN("Kotlin"), PYTHON("Python");
 
+        private final String language;
+
+        Language(String language) {
+            this.language = language;
+        }
+
+        @Override
+        public String toString() {
+            return language;
+        }
+    }
+
+    private static final String BRAIN_STATUS = "Always ready to learn and adapt";
+
+    private final Pronoun[] pronouns = {Pronoun.HE, Pronoun.HIM};
+    private final Language[] languages = {Language.JAVA, Language.KOTLIN, Language.PYTHON};
+
+    @Override
+    public void eat() {
+        System.out.println("Eating healthy to stay productive!");
+    }
+
+    @Override
+    public void sleep() {
+        System.out.println("Getting enough sleep to stay refreshed!");
+    }
+
+    @Override
+    public void code() {
+        System.out.println("Coding with passion and efficiency!");
+    }
+
+    public void printDetails() {
+        System.out.println("Pronouns: " + String.join(", ", (CharSequence[]) pronouns));
+        System.out.println("Languages: " + String.join(", ", (CharSequence[]) languages));
+        System.out.println("Brain Status: " + BRAIN_STATUS);
+    }
+
+    public static void main(String[] args) {
+        Tobias tobias = new Tobias();
+        tobias.eat();
+        tobias.sleep();
+        tobias.code();
+        tobias.printDetails();
+    }
 }
+
 ```
 
 ---
