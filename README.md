@@ -1,6 +1,6 @@
 # Hi, I'm Tobias Bonifay
 _Student in 5th year of engineering school at [Polytech Nice](https://polytech.univ-cotedazur.fr)_<br>
-_Specialized in Software Architecture_
+_Specialized in Software Design_
 
 ## Who am I? 
 
@@ -94,7 +94,5 @@ class Tobias implements Human, CodingAbility {
 ```
 
 ---
-
-[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)  [![forthebadge](http://forthebadge.com/images/badges/powered-by-coffee.svg)](http://forthebadge.com)
 
 ---
