@@ -1,10 +1,10 @@
 # Hi, I'm Tobias Bonifay
-_Student in 5th year of engineering school at [Polytech Nice](https://polytech.univ-cotedazur.fr)_<br>
+_Old student in engineering school at [Polytech Nice](https://polytech.univ-cotedazur.fr)_<br>
 _Specialized in Software Design_
 
 ## Who am I? 
 
-An engineering student hailing from Nice, France. Currently, I am 22 years old and thriving to grasp every opportunity that can enhance my skills in Java.
+An engineering student hailing from Nice, France. Currently, I am 23 years old and thriving to grasp every opportunity that can enhance my skills in Java.
 
 I'm enthusiastic about any potential opportunities or projects that involve Java development.
 
@@ -13,81 +13,102 @@ I'm enthusiastic about any potential opportunities or projects that involve Java
 My insatiable curiosity drives me to constantly expand my knowledge base. I am particularly keen to refine my skills in software development tools such as Git, algorithms, and object-oriented programming.
 
 ```java
-package world;
+package io.github.tobiasbonifay;
 
-interface Human {
-    void eat();
-    void sleep();
-}
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.*;
 
-interface CodingAbility {
-    void code();
-}
+import java.util.*;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 
-class Tobias implements Human, CodingAbility {
+@SpringBootApplication
+@RestController
+@RequestMapping("/api/tobias")
+public class TobiasProfile {
 
-    private enum Pronoun {
-        HE("he"), HIM("him");
+    private static final List<String> SKILLS = Arrays.asList(
+        "Java", "Spring Boot", "Angular", "Vue.js", "Python", "SQL", "Git"
+    );
 
-        private final String pronoun;
+    private static final Map<String, String> EXPERIENCES = Map.of(
+        "EVIDEN SLOVAKIA", "Full-Stack Software Engineer",
+        "EVIDEN FRANCE", "Java Swing Software Engineer",
+        "ATOS", "Java Backend Software Engineer Intern",
+        "CSI CONSOLIDATED", "System Administrator Intern"
+    );
 
-        Pronoun(String pronoun) {
-            this.pronoun = pronoun;
-        }
+    public sealed interface ProjectStatus 
+        permits InProgress, Completed, Planned {}
+    public record InProgress(int percentageComplete) implements ProjectStatus {}
+    public record Completed(String completionDate) implements ProjectStatus {}
+    public record Planned(String plannedStartDate) implements ProjectStatus {}
 
-        @Override
-        public String toString() {
-            return pronoun;
-        }
+    public record Project(String name, String description, ProjectStatus status) {}
+
+    public String getProjectStatusDescription(ProjectStatus status) {
+        return switch (status) {
+            case InProgress p -> "In progress: " + p.percentageComplete() + "% complete";
+            case Completed c -> "Completed on: " + c.completionDate();
+            case Planned p -> "Planned to start on: " + p.plannedStartDate();
+        };
     }
 
-    private enum Language {
-        JAVA("Java"), KOTLIN("Kotlin"), PYTHON("Python");
-
-        private final String language;
-
-        Language(String language) {
-            this.language = language;
-        }
-
-        @Override
-        public String toString() {
-            return language;
-        }
+    @GetMapping("/info")
+    public Map<String, Object> getProfileInfo() {
+        Map<String, Object> profile = new HashMap<>();
+        profile.put("name", "Tobias Bonifay");
+        profile.put("role", "Junior Software Engineer with Architecture specialty");
+        profile.put("location", "Nice, France");
+        profile.put("skills", SKILLS);
+        profile.put("experiences", EXPERIENCES);
+        return profile;
     }
 
-    private static final String BRAIN_STATUS = "Always ready to learn and adapt";
-
-    private final Pronoun[] pronouns = {Pronoun.HE, Pronoun.HIM};
-    private final Language[] languages = {Language.JAVA, Language.KOTLIN, Language.PYTHON};
-
-    @Override
-    public void eat() {
-        System.out.println("Eating healthy to stay productive!");
+    @GetMapping("/projects")
+    public CompletableFuture<List<Project>> getProjects() {
+        return CompletableFuture.supplyAsync(() -> List.of(
+            new Project("MUSIC DSL", "Domain Specific Language, Java - Midi - ANTLR", new Completed("2024-01-15")),
+            new Project("CONNECT 4", "AWARD TEAM POLYTECH NICE (Angular, Node.js)", new InProgress(75)),
+            new Project("ECO BIKING", "C#, SOAP", new Planned("2024-09-01"))
+        ));
     }
 
-    @Override
-    public void sleep() {
-        System.out.println("Getting enough sleep to stay refreshed!");
+    @PostMapping("/contact")
+    public String contact(@RequestBody String message) {
+        // Simulating contacting logic
+        return "Thanks for reaching out! I'll get back to you soon regarding: " + message;
     }
 
-    @Override
-    public void code() {
-        System.out.println("Coding with passion and efficiency!");
-    }
-
-    public void printDetails() {
-        System.out.println("Pronouns: " + String.join(", ", (CharSequence[]) pronouns));
-        System.out.println("Languages: " + String.join(", ", (CharSequence[]) languages));
-        System.out.println("Brain Status: " + BRAIN_STATUS);
-    }
+    private static final String WELCOME_MESSAGE = """
+        Welcome to Tobias Bonifay's profile!
+        Here you can find information about my skills, experiences, and projects.
+        Feel free to explore the API endpoints:
+          - GET /api/tobias/info
+          - GET /api/tobias/projects
+          - POST /api/tobias/contact
+        """;
 
     public static void main(String[] args) {
-        Tobias tobias = new Tobias();
-        tobias.eat();
-        tobias.sleep();
-        tobias.code();
-        tobias.printDetails();
+        SpringApplication.run(TobiasProfile.class, args);
+        System.out.println(WELCOME_MESSAGE);
+        
+        var sortedSkills = SKILLS.stream()
+            .sorted()
+            .collect(Collectors.toList());
+        
+        List<String> upperCaseSkills = SKILLS.stream()
+            .map(String::toUpperCase)
+            .toList();
+
+        System.out.println("Sorted skills: " + String.join(", ", sortedSkills));
+        System.out.println("Uppercase skills: " + String.join(", ", upperCaseSkills));
+
+        Optional.of("Java").ifPresentOrElse(
+            lang -> System.out.println("Favorite language: " + lang),
+            () -> System.out.println("No favorite language specified")
+        );
     }
 }
 
